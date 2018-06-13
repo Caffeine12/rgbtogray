@@ -6,9 +6,10 @@ image = imread(filepath);
 red = double(image(:,:,1));
 green = double(image(:,:,2));
 blue = double(image(:,:,3));
-%Here I will display the red green and blue values
-figure, imshow(red);
-figure, imshow(green);
-figure, imshow(blue);
-
+%Took average of red green and blue values of pixels
+average = double((red+green+blue)/3);
+%Converted double matrix into integer matrix
+grayscale = uint8(average);
+%Here I will display the image in UI
+figure, imshow(grayscale);
 
