@@ -8,8 +8,20 @@ green = double(image(:,:,2));
 blue = double(image(:,:,3));
 %Took average of red green and blue values of pixels
 average = double((red+green+blue)/3);
-%Converted double matrix into integer matrix
+%Converting double matrix into integer matrix
 grayscale = uint8(average);
+%Converting grayscale image to binary image
+binary = grayscale;
+for i=1:size(grayscale,1)
+    for j=1:size(grayscale,2)
+        if(grayscale(i,j))>127
+            binary(i,j)=1;
+        else
+            binary(i,j)=0;
+        end
+    end
+end
+binary=single(binary);
 %Here I will display the image in UI
-figure, imshow(grayscale);
+figure, imshow(binary);
 
